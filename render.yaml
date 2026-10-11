@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: gymsoft-backend
+    env: python
+    plan: free
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_ORIGINS
+        value: "https://gymsoft-frontend.onrender.com,https://your-custom-domain.com"
+    autoDeploy: true
+    healthCheckPath: /health
+    disk:
+      name: gymsoft-data
+      mountPath: /opt/render/project/src/backend/data
+      sizeGB: 1
