@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { registerApi } from '../services/api';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -43,7 +43,7 @@ const Register = () => {
     setError('');
 
     try {
-      const res = await axios.post('http://127.0.0.1:8000/auth/register', formData);
+      const res = await registerApi(formData);
 
       localStorage.setItem('token', res.data.access_token);
       localStorage.setItem('role', res.data.role);

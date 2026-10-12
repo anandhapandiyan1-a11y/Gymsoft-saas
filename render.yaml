@@ -13,7 +13,7 @@ services:
       - key: DEBUG
         value: "False"
       - key: ALLOWED_ORIGINS
-        value: "https://gymsoft-frontend.onrender.com,https://your-custom-domain.com"
+        value: "https://gymsoft-saas.vercel.app"
     autoDeploy: true
     healthCheckPath: /health
     disk:

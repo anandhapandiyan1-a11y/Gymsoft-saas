@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { loginApi } from '../services/api';
 
 const Login = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -15,7 +15,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/login', {
+      const response = await loginApi({
         phone_number: phoneNumber,
         password: password,
       });
